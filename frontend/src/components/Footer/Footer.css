@@ -1,0 +1,33 @@
+.footer .wrapper{
+    display: flex;
+    justify-content: space-around;
+    background: #000;
+    color: #fff9;
+}
+
+.footer .wrapper ul{
+    list-style: none;
+}
+
+.footer .wrapper ul li{
+    margin: 10px 0;
+}
+
+.footer .wrapper .title{
+    font-weight: 600;
+    background: none;
+    text-align: left;
+    color: #fff;
+}
+
+.footer .wrapper ul li:hover{
+    color: #fff;
+}
+
+.copyright{
+    background-color: #000;
+    color: #fff;
+    border-top: 1px solid #ccc;
+    padding: 15px 0;
+    text-align: center;
+}

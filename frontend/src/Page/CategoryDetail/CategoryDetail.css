@@ -1,0 +1,46 @@
+.cateDetail{
+    display: flex;
+    flex-direction: column;
+}
+
+.cateList{
+    border-radius: 3px;
+    height: 80px;
+    border: 1px dashed #ff2222;
+    background: #ffebeb;
+    line-height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.cateList li{
+    margin-right: 30px;
+    color: #dd3333;
+}
+
+.cateList li a{
+    color: #0073ca;
+    text-decoration: none;
+}
+
+.cateList li:hover a{
+    text-decoration:underline;
+}
+
+.btnLoadMore{
+    width: 164px;
+    height: 40px;
+    margin: 10px 0 20px;
+    font-size: 14px;
+    font-weight: 600;
+    border: 4px solid #333;
+    border-radius: 4px;
+    background: transparent;
+}
+
+.btnLoadMore:hover{
+    background: #333;
+    cursor: pointer;
+    color: #fff;
+}

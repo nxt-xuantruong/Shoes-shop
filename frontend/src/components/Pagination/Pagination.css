@@ -1,0 +1,23 @@
+.pagination{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+.btnPage{
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 10px;
+    border-bottom: 1px solid transparent;
+}
+
+.btnPage:hover{
+    border-bottom: 1px solid #333;
+}
+
+.btnPage.active{
+    border-bottom: 1px solid #333;
+}

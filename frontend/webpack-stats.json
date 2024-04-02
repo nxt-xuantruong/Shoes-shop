@@ -1,0 +1,21 @@
+{
+  "status": "done",
+  "assets": {
+    "main-2f0ba007f408596a0725.js": {
+      "name": "main-2f0ba007f408596a0725.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-2f0ba007f408596a0725.js",
+      "publicPath": "auto"
+    },
+    "node_modules_web-vitals_dist_web-vitals_js-6f758be8286d31f32292.js": {
+      "name": "node_modules_web-vitals_dist_web-vitals_js-6f758be8286d31f32292.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\node_modules_web-vitals_dist_web-vitals_js-6f758be8286d31f32292.js",
+      "publicPath": "auto"
+    }
+  },
+  "chunks": {
+    "main": [
+      "main-2f0ba007f408596a0725.js"
+    ]
+  },
+  "publicPath": "auto"
+}

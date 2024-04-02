@@ -1,0 +1,27 @@
+.Search{
+    display: flex;
+    width: 270px;   
+    height: 40px;
+    border: 1px solid #e1e1e1;
+    border-radius: 32px;
+}
+
+.Search input{
+    width: 222px;
+    padding: 12px 10px;
+    background: transparent;
+    border: none;
+}
+
+.Search input:focus{
+    outline: none;
+}
+
+.Search .btnSearch{
+    width: 46px;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-size: 16px;
+
+}

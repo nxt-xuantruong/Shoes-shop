@@ -1,0 +1,177 @@
+.mainContent{
+    display: flex;
+    flex-direction: column;
+    padding: 0 100px;
+    margin: 10px 0;
+}
+
+.infoProduct{
+    display: flex;
+}
+
+.infoProduct .nameProduct{
+    font-size: 24px;
+}
+
+.infoProduct .price{
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.price .priceSale{
+    color: #dd2222;
+    font-weight: 700;
+    margin: 15px 20px 15px 0;
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.price .priceOriginal{
+    text-decoration: line-through;
+    font-weight: 400;
+    letter-spacing: 2px;
+}
+
+.size{
+    display: flex;
+    align-items: center;
+}
+
+.sizeValue{
+    display: flex;
+}
+
+.sizeValue option{
+    width: 25px;
+    height: 25px;
+    border: 1px solid #ccc;
+    color: #2b2b2b;
+    text-align: center;
+    margin: 0 2px;
+}
+
+.sizeValue option:hover{
+    border: 2px solid #ccc;
+    cursor: pointer;
+}
+
+.sizeValue .active{
+    border: 2px solid #333;
+}
+
+.size .label{
+    color: #666;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 36px;
+    margin: 0;
+    min-width: 65px;
+    padding: 2px;
+    text-transform: uppercase;
+    width: auto;
+}
+
+.slideImg{
+    width: 550px;
+    height: 500px;
+    position: relative;
+    margin-right: 10px;
+}
+
+.slideImg .imgMain{
+    width: 100%;
+}
+
+.slideImg .imgDescSlide{
+    width: 100%;
+    height: 80px;
+    display: flex;
+    overflow: hidden;
+    list-style: none;
+    padding: 0;
+}
+
+.slideImg .imgDescSlide img{
+    width: 88px;
+    height: 70px;
+    margin: 0 2px;
+}
+
+.slideImg .btnPrev , .slideImg .btnNext{
+    position: absolute;
+    top: 40%;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    color: #333;
+    opacity: 0.6;
+}
+
+.slideImg .btnPrev{
+    left: 10px;
+}
+
+.slideImg .btnNext{
+    right: 10px;
+}
+
+.btn{
+    margin: 10px 0;
+}
+
+.btn .btnAddToCart{
+    width: 180px;
+    height: 40px;
+    font-size: 15px;
+    margin-right: 10px;
+    border: none;
+    background: #dd3333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn .btnPay{
+    width: 180px;
+    height: 40px;
+    font-size: 15px;
+    border: none;
+    background: #dd3333;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn .btnAddToCart:disabled,
+.btn .btnPay:disabled,
+.btn .btnAddToCart:hover,
+.btn .btnPay:hover{
+    opacity: 0.6;
+}
+
+.saleShop{
+    list-style: none;
+    border: 2px dashed #dd3333;
+    padding: 20px;
+}
+
+.saleShop li{
+    margin: 5px 0;
+}
+
+.saleShop li .iconLi{
+    color: #38b53e;
+    margin-right: 5px;
+}
+
+.description h2{
+    text-align: center;
+}
+
+.description .textDesc{
+    margin: 20px 0;
+    text-align: center;
+}
+
+.description .imgDesc img{
+    width: 100%;
+}

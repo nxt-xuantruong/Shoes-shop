@@ -1,0 +1,70 @@
+.payContainer{
+    margin: 100px 0;
+    padding: 0 200px;
+    text-align: center;
+}
+
+.checkout{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.checkout .row{
+    display: flex;
+    text-align: left;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.checkout .row div{
+    width: 400px;
+}
+
+.checkout .row input{
+    width: 400px;
+}
+
+
+.checkout div label{
+    text-align: left;
+}
+
+.checkout div input{
+    height: 30px;
+}
+
+.checkout .bill .productBuy{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    align-items: center;
+    border-bottom: 1px solid;
+    font-size: 18px;
+}
+
+.checkout .bill .productBuy img{
+    width: 100px;
+    height: 100px;
+}
+
+.checkout .bill div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-size: 22px;
+}
+
+.btnOrder{
+    width: 120px;
+    height: 40px;
+    background-color: #dd2222;
+    color: #000;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+
+.btnOrder:hover{
+    background-color: transparent;
+    border: 2px solid #dd2222;
+}

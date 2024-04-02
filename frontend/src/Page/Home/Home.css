@@ -1,0 +1,25 @@
+.home{
+    padding: 0 100px;
+}
+
+.homeAbout{
+    display: flex;
+}
+
+.homeAbout .left{
+    text-align: center;
+}
+
+.homeAbout p{
+    color: #2b2b2b;
+}
+
+.homeAbout .subHeader{
+    color: #B57B00;
+    font-size: 28px;
+}
+
+.homeAbout h2{
+    font-size: 48px;
+    font-weight: 900;
+}

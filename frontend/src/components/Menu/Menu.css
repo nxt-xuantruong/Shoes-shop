@@ -1,0 +1,81 @@
+.Wrapper{
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    margin: 0;
+    text-transform: uppercase;
+    align-items: center;
+    list-style-type: none;
+    border-bottom: 1px solid #e1e1e1;
+    background-color: #fff;
+    
+}
+.menu{
+    position: relative;
+    padding: 15px 10px;
+    margin: 0 5px;
+    z-index: 1;
+}
+
+.menu a{
+    font-size: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    color: #000;
+}
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+  }
+
+.menu:hover .subMenu{
+    display: block;
+}
+.subMenu, .subMenuRight{
+    position: absolute;
+    top: 51px;
+    left: 0;
+    padding: 10px;
+    display: none;
+    list-style-type: none;
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+}
+
+.subMenuRight{
+    top: 0;
+    left: 103%;
+}
+
+.subMenu li{
+    padding: 10px 0px;
+    border-bottom: 1px solid #ccc;
+    position: relative;
+}
+
+.subMenu .flRight{
+    float: right;
+    padding: 0 10px;
+}
+
+.subMenu li:last-child{
+    border: none;
+}
+
+.subMenu li h3{
+    font-size: 15px;
+    font-weight: 500;
+    margin: 0;
+}
+
+.subMenu li:hover, .subMenuRight li:hover{
+    color: #444;
+    cursor: pointer;
+}
+
+.subMenu li:hover .subMenuRight{
+    display: block;
+}
