@@ -1,25 +1,25 @@
 import { useEffect, useState } from "react";
-// import productService from "../../../services/productService";
 import { Link } from "react-router-dom";
-// import categoryService from "../../../services/categoryService";
+import productService from "../../../services/productService";
+import categoryService from "../../../services/categoryService";
 
 export default function List() {
   const [product, setProduct] = useState([]);
   const [categories, setCategories] = useState([]);
 
-  // useEffect(() => {
-  //   productService.gets().then((response) => {
-  //     if (response.data) {
-  //       setProduct(response.data.results);
-  //     }
-  //   });
+  useEffect(() => {
+    productService.gets().then((response) => {
+      if (response.data) {
+        setProduct(response.data.results);
+      }
+    });
 
-  //   categoryService.gets().then((response) => {
-  //     if (response.data) {
-  //       setCategories(response.data.results);
-  //     }
-  //   });
-  // }, []);
+    categoryService.gets().then((response) => {
+      if (response.data) {
+        setCategories(response.data.results);
+      }
+    });
+  }, []);
 
   // const handleDelete = (id) => {
   //   productService.delete(id);

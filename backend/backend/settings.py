@@ -21,11 +21,22 @@ env = environ.Env()
 # read environment variables from environment file
 environ.Env.read_env(join(BASE_DIR, 'config.env'))
 
+CLIENT_ID = env('CLIENT_ID')
+CLIENT_SECRET = env('CLIENT_SECRET')
+CLIENT_TYPE = env('CLIENT_TYPE')
+AUTHORIZATION_GRANT_TYPE = env('AUTHORIZATION_GRANT_TYPE')
+
 DB_NAME = env('DB_NAME')
 DB_USER = env('DB_USER')
 DB_PASSWORD = env('DB_PASSWORD')
 DB_HOST = env('DB_HOST')
 DB_PORT = env('DB_PORT')
+
+APP_NAME = env('APP_NAME')
+
+DEFAULT_USER= env ('DEFAULT_USER')
+DEFAULT_PASSWORD= env ('DEFAULT_PASSWORD')
+DEFAULT_EMAIL= env ('DEFAULT_EMAIL')
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -62,6 +73,7 @@ INSTALLED_APPS = [
     'oauth2_provider',
     'corsheaders',
     'product',
+    'baseapi',
 ]
 
 MIDDLEWARE = [
@@ -190,3 +202,5 @@ WEBPACK_LOADER = {
     }
 }
 
+
+LOGIN_URL = '/account/login/'

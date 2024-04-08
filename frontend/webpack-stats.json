@@ -1,9 +1,54 @@
 {
   "status": "done",
   "assets": {
-    "main-2f0ba007f408596a0725.js": {
-      "name": "main-2f0ba007f408596a0725.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-2f0ba007f408596a0725.js",
+    "main-4cdfc272526fefa549f5.js": {
+      "name": "main-4cdfc272526fefa549f5.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-4cdfc272526fefa549f5.js",
+      "publicPath": "auto"
+    },
+    "main-4e7e4047f58c56ad77e9.js": {
+      "name": "main-4e7e4047f58c56ad77e9.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-4e7e4047f58c56ad77e9.js",
+      "publicPath": "auto"
+    },
+    "main-51361db398fddafcc9a4.js": {
+      "name": "main-51361db398fddafcc9a4.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-51361db398fddafcc9a4.js",
+      "publicPath": "auto"
+    },
+    "main-590a6fb4826dbf82250a.js": {
+      "name": "main-590a6fb4826dbf82250a.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-590a6fb4826dbf82250a.js",
+      "publicPath": "auto"
+    },
+    "main-867ce918cbb9fad2138e.js": {
+      "name": "main-867ce918cbb9fad2138e.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-867ce918cbb9fad2138e.js",
+      "publicPath": "auto"
+    },
+    "main-98f1f13b8b9bac7c5f2a.js": {
+      "name": "main-98f1f13b8b9bac7c5f2a.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-98f1f13b8b9bac7c5f2a.js",
+      "publicPath": "auto"
+    },
+    "main-b6ee84fe49247bdc3a70.js": {
+      "name": "main-b6ee84fe49247bdc3a70.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-b6ee84fe49247bdc3a70.js",
+      "publicPath": "auto"
+    },
+    "main-c2807ee23fb334bbc65f.js": {
+      "name": "main-c2807ee23fb334bbc65f.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-c2807ee23fb334bbc65f.js",
+      "publicPath": "auto"
+    },
+    "main-ef0c9f8441dc1ee8808a.js": {
+      "name": "main-ef0c9f8441dc1ee8808a.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-ef0c9f8441dc1ee8808a.js",
+      "publicPath": "auto"
+    },
+    "main-faf6cb25b1b32161b3ef.js": {
+      "name": "main-faf6cb25b1b32161b3ef.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-faf6cb25b1b32161b3ef.js",
       "publicPath": "auto"
     },
     "node_modules_web-vitals_dist_web-vitals_js-6f758be8286d31f32292.js": {
@@ -14,7 +59,7 @@
   },
   "chunks": {
     "main": [
-      "main-2f0ba007f408596a0725.js"
+      "main-4cdfc272526fefa549f5.js"
     ]
   },
   "publicPath": "auto"

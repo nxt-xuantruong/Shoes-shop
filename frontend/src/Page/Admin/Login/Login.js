@@ -1,25 +1,39 @@
 import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import oauthServices from "../../../services/oauthServices"
+import { updateOauthInfo } from "../../../Config/store/oauth";
+import { loginAdmin } from "../../../Config/store/oauthAdmin";
 
 function LoginAdmin() {
-  const [userName, setUserName] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-
-  const adminAccount = useSelector((state) => state.admin.admins);
+  const dispatch = useDispatch();
+  // const adminAccount = useSelector((state) => state.admin.admins);
   const navigate = useNavigate();
-  const handleLogin = () => {
-    const accAdmin = adminAccount.find((admin) => {
-      return admin.name === userName && admin.password === password;
-    });
-    if (accAdmin) {
-      localStorage.setItem("currentAdmin", JSON.stringify(accAdmin));
-      alert("Đăng nhập thành công");
-      navigate("/admin");
-    } else {
-      setError("tên đăng nhập hoặc mật khẩu không đúng");
-    }
+  const handleLogin = (e) => {
+    e.preventDefault();
+    oauthServices
+      .login({ username, password })
+      .then((response) => {
+        if (response && response.data) {
+          dispatch(updateOauthInfo(response.data));
+          dispatch(loginAdmin({ name:username}))
+          navigate("/admin/products");
+        }
+      })
+      .catch((err) => console.log(err));
+    // const accAdmin = adminAccount.find((admin) => {
+    //   return admin.name === userName && admin.password === password;
+    // });
+    // if (accAdmin) {
+    //   localStorage.setItem("currentAdmin", JSON.stringify(accAdmin));
+    //   alert("Đăng nhập thành công");
+    //   navigate("/admin");
+    // } else {
+    //   setError("tên đăng nhập hoặc mật khẩu không đúng");
+    // }
   };
 
   return (
@@ -31,7 +45,7 @@ function LoginAdmin() {
           <input
             type="text"
             placeholder="Tên đăng nhập"
-            value={userName}
+            value={username}
             onChange={(e) => {
               setUserName(e.target.value);
             }}

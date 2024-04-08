@@ -1,5 +1,6 @@
 // layouts
 import SidebarLayout from "../Layouts/SidebarLayout/SidebarLayout";
+import LayoutaAdmin from "../Layouts/AdminLayout/Admin";
 
 // Pages
 import Home from "../Page/Home/Home";
@@ -8,10 +9,11 @@ import CategoryDetail from "../Page/CategoryDetail/CategoryDetail";
 import ProductDetail from "../Page/ProductDetail/ProductDetail";
 import SearchResult from "../Page/SearchResult/SearchResult";
 import Account from "../Page/AcountActions/Account";
-import AdminLogin from "../Page/AdminLogin/AdminLogin";
 import Pay from "../Page/Pay/Pay";
 import List from "../Page/Admin/Product/List";
-import LayoutaAdmin from "../Layouts/AdminLayout/Admin";
+import LoginAdmin from "../Page/Admin/Login/Login";
+import New from "../Page/Admin/Product/New";
+import ListCategory from "../Page/Admin/Category/List";
 
 export const routesConfig = [
   { path: "/", component: Home },
@@ -31,13 +33,17 @@ export const routesConfig = [
   { path: "/cart", component: Cart },
   { path: "/user/:type", component: Account },
   { path: "/pay", component: Pay },
+  { path: "/admin/", component: LoginAdmin },
+  // { path: "/admin/user", component: UserCustomer, layout: LayoutaAdmin },
+  // { path: "/admin/user/edit/:id", component: EditUser, layout: LayoutaAdmin },
+  { path: "/admin/products/", component: List, layout: LayoutaAdmin },
+  { path: "/admin/products/new", component: New, layout: LayoutaAdmin },
+  // { path: "/admin/products/:id", component: Edit, layout: LayoutaAdmin },
+  { path: "/admin/categories/", component: ListCategory, layout: LayoutaAdmin },
+  // { path: "/admin/categories/new", component: NewCategory, layout: LayoutaAdmin },
+  // { path: "/admin/categories/:id", component: EditCategory, layout: LayoutaAdmin },
 ];
 
 export const privateRoute = [
-  {
-    path: "/admin/products",
-    component: List,
-    layout: LayoutaAdmin
-  },
-  { path: "/admin/login", component: AdminLogin },
+
 ];

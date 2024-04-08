@@ -7,7 +7,7 @@ function ProductItem({ data }) {
   };
   return (
     <Link to={"/product/" + data.id}>
-      <div className="card">
+      <div className="cardP">
         <img src={data.img_thumbnail} alt={data.name} />
         {data.sale !== 0 && <span className="sale">-{data.sale}%</span>}
         <div className="cardInfo">
