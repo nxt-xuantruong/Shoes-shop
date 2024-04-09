@@ -2,6 +2,8 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import categoryService from "../../../services/categoryService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 export default function ListCategory() {
   const [categories, setCategories] = useState([]);
@@ -31,7 +33,6 @@ export default function ListCategory() {
               <tr>
                 <th scope="col">Tên danh mục</th>
                 <th scope="col">Tên danh mục cha</th>
-                <th scope="col">slug</th>
                 <th scope="col">Ngày tạo</th>
                 <th scope="col">Tác vụ</th>
               </tr>
@@ -45,7 +46,6 @@ export default function ListCategory() {
                       <td>
                         {categories.find((it) => it.id === item.parent_id)?.name || ""}
                       </td>
-                      <td>{item.slug}</td>
                       <td>{item.date}</td>
                       <td>
                         <div className="d-flex">
@@ -53,7 +53,7 @@ export default function ListCategory() {
                             className="btn btn-success btn-sm rounded-0 text-white"
                             to={item.id + "/"}
                           >
-                            <i className="fa fa-edit"></i>
+                            <FontAwesomeIcon icon={faPenToSquare}/>
                           </Link>
                           <button
                             className="btn btn-danger btn-sm rounded-0 text-white"
@@ -63,7 +63,7 @@ export default function ListCategory() {
                               ) && handleDelete(item.id)
                             }
                           >
-                            <i className="fa fa-trash"></i>
+                            <FontAwesomeIcon icon={faTrashCan}/>
                           </button>
                         </div>
                       </td>

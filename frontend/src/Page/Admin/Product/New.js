@@ -43,6 +43,7 @@ export default function New() {
     setNewImages(selectedImages);
   };
 
+
   const handleSubmit = (e) => {
     e.preventDefault();
     let data = { ...formData }
@@ -101,20 +102,7 @@ export default function New() {
                     required
                   />
                 </div>
-                <div className="form-group">
-                  <label for="name">slug (link thân thiện)</label>
-                  <input
-                    className="form-control"
-                    type="text"
-                    name="slug"
-                    id="slug"
-                    value={formData.slug}
-                    onChange={(e) =>
-                      setFormData({ ...formData, slug: e.target.value })
-                    }
-                    required
-                  />
-                </div>
+
                 <div className="form-row">
                   <div className="col-6">
                     <div className="form-group">

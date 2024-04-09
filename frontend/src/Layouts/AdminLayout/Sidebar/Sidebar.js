@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { faFolder } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default function Sidebar() {
   const [activeItem, setActiveItem] = useState(["user", "list"]);
@@ -17,9 +19,31 @@ export default function Sidebar() {
         >
           <Link to="/admin/user">
             <div className="nav-link-icon d-inline-flex">
-              <i className="far fa-folder"></i>
+              <FontAwesomeIcon icon={faFolder} />
             </div>
             Users
+          </Link>
+        </li>
+        <li
+          className={`nav-link ${activeItem[0] === "banner" ? "active" : ""}`}
+          onClick={() => handleClick("banner")}
+        >
+          <Link to="/admin/banner">
+            <div className="nav-link-icon d-inline-flex">
+              <FontAwesomeIcon icon={faFolder} />
+            </div>
+            Banner
+          </Link>
+        </li>
+        <li
+          className={`nav-link ${activeItem[0] === "order" ? "active" : ""}`}
+          onClick={() => handleClick("order")}
+        >
+          <Link to="/admin/order">
+            <div className="nav-link-icon d-inline-flex">
+              <FontAwesomeIcon icon={faFolder} />
+            </div>
+            Orders
           </Link>
         </li>
         <li
@@ -31,7 +55,7 @@ export default function Sidebar() {
             style={{ position: "relative", display: "block" }}
           >
             <div className="nav-link-icon d-inline-flex">
-              <i className="far fa-folder"></i>
+              <FontAwesomeIcon icon={faFolder} />
             </div>
             Product
             <i
@@ -63,7 +87,7 @@ export default function Sidebar() {
                 handleClick("product", "list");
               }}
             >
-              <Link to="/admin/products/">danh sách sản phẩm</Link>
+              <Link to="/admin/products/">Danh sách sản phẩm</Link>
             </li>
             <li
               className={`nav-link ${activeItem[1] === "add" ? "active" : ""}`}
@@ -85,7 +109,7 @@ export default function Sidebar() {
             style={{ position: "relative", display: "block" }}
           >
             <div className="nav-link-icon d-inline-flex">
-              <i className="far fa-folder"></i>
+              <FontAwesomeIcon icon={faFolder} />
             </div>
             Category product
             <i
@@ -117,7 +141,7 @@ export default function Sidebar() {
                 handleClick("categoryProduct", "list");
               }}
             >
-              <Link to="/admin/categories/">danh sách danh mục</Link>
+              <Link to="/admin/categories/">Danh sách danh mục</Link>
             </li>
             <li
               className={`nav-link ${activeItem[1] === "add" ? "active" : ""}`}

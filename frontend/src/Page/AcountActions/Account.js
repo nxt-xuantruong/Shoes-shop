@@ -1,38 +1,45 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { addUser } from "../../Config/store/users";
 
 import "./Account.css";
-import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import md5 from 'js-md5';
+import { useDispatch} from "react-redux";
+import { useState,useEffect } from "react";
+import customerServices from "../../services/customerServices";
+import { loginCustomer } from "../../Config/store/oauthCustomer";
+
 
 function Account() {
   const { type } = useParams();
-  const users = useSelector((state) => state.users.users);
+  // const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [users, setUsers] = useState([]);
   const navigate = useNavigate();
+  useEffect(()=>{
+    customerServices.gets().then((response) => {
+      if (response.data) {
+        setUsers(response.data.results);
+      }
+    });
+  }, [])
   const handleSignUp = (e) => {
-    dispatch(addUser({ name, email, phoneNumber, password }));
+    customerServices.create({ name, email, phone, password })
+    alert("Đã tạo tài khoản thành công")
+    // dispatch(addUser({ name, email, phone, password }));
     navigate(-1, { replace: true });
   };
 
   const handleLogin = () => {
-    const user = users.find(
-      (user) => user.email === email && user.password === password
-    );
-    if (user) {
-      alert("Đăng nhập thành công");
-      localStorage.setItem("currentUser", JSON.stringify(user));
+    const data = { email, password: md5(password) }
+      dispatch(loginCustomer({users, data}));
       navigate(-1, { replace: true });
-    } else {
-      setError("Email hoặc mật khẩu không đúng");
-    }
-  };
+  }
+
 
   return (
     <div className="formWrapper">
@@ -73,9 +80,9 @@ function Account() {
             <input
               type="tel"
               placeholder="Số điện thoại"
-              value={phoneNumber}
+              value={phone}
               onChange={(e) => {
-                setPhoneNumber(e.target.value);
+                setPhone(e.target.value);
               }}
             />
           )}

@@ -5,16 +5,17 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
 import Search from "../Search/Search";
 import Cart from "../Cart/Cart";
+import { useSelector } from "react-redux";
 
 import "./Header.css";
 import Menu from "../Menu/Menu";
 import { Link } from "react-router-dom";
+
 function Header() {
-  const [currentUser, setCurrentUser] = useState(
-    JSON.parse(localStorage.getItem("currentUser"))
-  );
+
+  const [currentUser, setCurrentUser] = useState(useSelector((state) => state.oauthCustomer))
+  console.log(currentUser);
   const handleLogOut = () => {
-    localStorage.removeItem("currentUser");
     setCurrentUser(null);
   };
 
@@ -31,7 +32,7 @@ function Header() {
         {currentUser !== null ? (
           <div className="userAction">
             <FontAwesomeIcon icon={faUser} />
-            <span>{currentUser.name}</span>
+            <span>{currentUser.user}</span>
             <ul className="menuUser">
                 <Link to='/account'>
                   <li>

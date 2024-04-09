@@ -7,7 +7,7 @@ from django.core.files.uploadedfile import InMemoryUploadedFile
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
-        fields = ['id', 'name', 'slug', 'date', 'parent_id']
+        fields = ['id', 'name', 'date', 'parent_id']
 
 
 class ProductImageSerializer(serializers.ModelSerializer):
@@ -19,7 +19,7 @@ class ProductSerializer(serializers.ModelSerializer):
     images= ProductImageSerializer(many=True, required=False)
     class Meta:
         model = Product
-        fields = ['id', 'name', 'price', 'discount','description', 'slug', 'thumbnail', 'date', 'category_id', 'number','images']
+        fields = ['id', 'name', 'price', 'discount','description', 'thumbnail', 'date', 'category_id', 'number','images']
 
     def to_internal_value(self, data):
         data = data.copy()

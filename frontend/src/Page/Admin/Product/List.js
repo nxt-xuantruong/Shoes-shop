@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import productService from "../../../services/productService";
 import categoryService from "../../../services/categoryService";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 export default function List() {
   const [product, setProduct] = useState([]);
@@ -21,10 +23,10 @@ export default function List() {
     });
   }, []);
 
-  // const handleDelete = (id) => {
-  //   productService.delete(id);
-  //   setProduct((pre) => pre.filter((product) => product.id !== id));
-  // };
+  const handleDelete = (id) => {
+    productService.delete(id);
+    setProduct((pre) => pre.filter((product) => product.id !== id));
+  };
 
   return (
     <div id="content" className="container-fluid">
@@ -50,7 +52,7 @@ export default function List() {
                   return (
                     <tr key={index}>
                       <td>
-                        <img src={item.thumbnail} alt="ảnh" />
+                        <img src={item.thumbnail} alt="ảnh" width={100}/>
                       </td>
                       <td>{item.name}</td>
                       <td>{item.price}</td>
@@ -67,17 +69,18 @@ export default function List() {
                             className="btn btn-success btn-sm rounded-0 text-white"
                             to={item.id + "/"}
                           >
-                            <i className="fa fa-edit"></i>
+                            <FontAwesomeIcon icon={faPenToSquare}/>
+
                           </Link>
                           <button
                             className="btn btn-danger btn-sm rounded-0 text-white"
-                            // onClick={() =>
-                            //   window.confirm(
-                            //     "Bạn có chắc chắn xóa bản ghi này"
-                            //   ) && handleDelete(item.id)
-                            // }
+                            onClick={() =>
+                              window.confirm(
+                                "Bạn có chắc chắn xóa bản ghi này"
+                              ) && handleDelete(item.id)
+                            }
                           >
-                            <i className="fa fa-trash"></i>
+                            <FontAwesomeIcon icon={faTrashCan}/>
                           </button>
                         </div>
                       </td>

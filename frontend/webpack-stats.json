@@ -1,54 +1,79 @@
 {
   "status": "done",
   "assets": {
-    "main-4cdfc272526fefa549f5.js": {
-      "name": "main-4cdfc272526fefa549f5.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-4cdfc272526fefa549f5.js",
+    "e534bedb043fbd09fe60cd2260ffa4ab.png": {
+      "name": "e534bedb043fbd09fe60cd2260ffa4ab.png",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\e534bedb043fbd09fe60cd2260ffa4ab.png",
       "publicPath": "auto"
     },
-    "main-4e7e4047f58c56ad77e9.js": {
-      "name": "main-4e7e4047f58c56ad77e9.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-4e7e4047f58c56ad77e9.js",
+    "main-06f43afe0f3566af7b70.js": {
+      "name": "main-06f43afe0f3566af7b70.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-06f43afe0f3566af7b70.js",
       "publicPath": "auto"
     },
-    "main-51361db398fddafcc9a4.js": {
-      "name": "main-51361db398fddafcc9a4.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-51361db398fddafcc9a4.js",
+    "main-08ea117da7b926ce9746.js": {
+      "name": "main-08ea117da7b926ce9746.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-08ea117da7b926ce9746.js",
       "publicPath": "auto"
     },
-    "main-590a6fb4826dbf82250a.js": {
-      "name": "main-590a6fb4826dbf82250a.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-590a6fb4826dbf82250a.js",
+    "main-41ec1c620081bf0357a2.js": {
+      "name": "main-41ec1c620081bf0357a2.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-41ec1c620081bf0357a2.js",
       "publicPath": "auto"
     },
-    "main-867ce918cbb9fad2138e.js": {
-      "name": "main-867ce918cbb9fad2138e.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-867ce918cbb9fad2138e.js",
+    "main-6d295cec1cceabde694a.js": {
+      "name": "main-6d295cec1cceabde694a.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-6d295cec1cceabde694a.js",
       "publicPath": "auto"
     },
-    "main-98f1f13b8b9bac7c5f2a.js": {
-      "name": "main-98f1f13b8b9bac7c5f2a.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-98f1f13b8b9bac7c5f2a.js",
+    "main-741dfa994521a90ba064.js": {
+      "name": "main-741dfa994521a90ba064.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-741dfa994521a90ba064.js",
       "publicPath": "auto"
     },
-    "main-b6ee84fe49247bdc3a70.js": {
-      "name": "main-b6ee84fe49247bdc3a70.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-b6ee84fe49247bdc3a70.js",
+    "main-77ab0dcdb25f7f7aed6a.js": {
+      "name": "main-77ab0dcdb25f7f7aed6a.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-77ab0dcdb25f7f7aed6a.js",
       "publicPath": "auto"
     },
-    "main-c2807ee23fb334bbc65f.js": {
-      "name": "main-c2807ee23fb334bbc65f.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-c2807ee23fb334bbc65f.js",
+    "main-86c41f2e0098a2175061.js": {
+      "name": "main-86c41f2e0098a2175061.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-86c41f2e0098a2175061.js",
       "publicPath": "auto"
     },
-    "main-ef0c9f8441dc1ee8808a.js": {
-      "name": "main-ef0c9f8441dc1ee8808a.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-ef0c9f8441dc1ee8808a.js",
+    "main-886fd735c2ff93ea5591.js": {
+      "name": "main-886fd735c2ff93ea5591.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-886fd735c2ff93ea5591.js",
       "publicPath": "auto"
     },
-    "main-faf6cb25b1b32161b3ef.js": {
-      "name": "main-faf6cb25b1b32161b3ef.js",
-      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-faf6cb25b1b32161b3ef.js",
+    "main-8aa7f76fdd00360c83e6.js": {
+      "name": "main-8aa7f76fdd00360c83e6.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-8aa7f76fdd00360c83e6.js",
+      "publicPath": "auto"
+    },
+    "main-8aba87709ffde28f57a1.js": {
+      "name": "main-8aba87709ffde28f57a1.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-8aba87709ffde28f57a1.js",
+      "publicPath": "auto"
+    },
+    "main-b11b45ccf0ce8a6cae47.js": {
+      "name": "main-b11b45ccf0ce8a6cae47.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-b11b45ccf0ce8a6cae47.js",
+      "publicPath": "auto"
+    },
+    "main-e070cfe37cb44d393044.js": {
+      "name": "main-e070cfe37cb44d393044.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-e070cfe37cb44d393044.js",
+      "publicPath": "auto"
+    },
+    "main-e62b7fdc2fe71ea4f47a.js": {
+      "name": "main-e62b7fdc2fe71ea4f47a.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-e62b7fdc2fe71ea4f47a.js",
+      "publicPath": "auto"
+    },
+    "main-f121bdfdb69cec23b123.js": {
+      "name": "main-f121bdfdb69cec23b123.js",
+      "path": "D:\\workspace\\django\\Shoes-shop\\frontend\\dist\\webpack_bundles\\main-f121bdfdb69cec23b123.js",
       "publicPath": "auto"
     },
     "node_modules_web-vitals_dist_web-vitals_js-6f758be8286d31f32292.js": {
@@ -59,8 +84,10 @@
   },
   "chunks": {
     "main": [
-      "main-4cdfc272526fefa549f5.js"
+      "main-741dfa994521a90ba064.js"
     ]
   },
-  "publicPath": "auto"
+  "publicPath": "auto",
+  "error": "ModuleBuildError",
+  "message": "Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: D:\\workspace\\django\\Shoes-shop\\frontend\\src\\components\\Header\\Header.js: Unexpected token, expected \",\" (16:92)\n\n  14 | function Header() {\n  15 |\n> 16 |   const [currentUser, setCurrentUser] = useState(useSelector((state) => state.oauthCustomer);\n     |                                                                                             ^\n  17 |   console.log(currentUser);\n  18 |   const handleLogOut = () => {\n  19 |     setCurrentUser(null);\n    at constructor (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:353:19)\n    at JSXParserMixin.raise (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:3277:19)\n    at JSXParserMixin.unexpected (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:3297:16)\n    at JSXParserMixin.expect (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:3601:28)\n    at JSXParserMixin.parseCallExpressionArguments (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10764:14)\n    at JSXParserMixin.parseCoverCallAndAsyncArrowHead (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10693:29)\n    at JSXParserMixin.parseSubscript (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10630:19)\n    at JSXParserMixin.parseSubscripts (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10603:19)\n    at JSXParserMixin.parseExprSubscripts (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10594:17)\n    at JSXParserMixin.parseUpdate (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10573:21)\n    at JSXParserMixin.parseMaybeUnary (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10551:23)\n    at JSXParserMixin.parseMaybeUnaryOrPrivate (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10405:61)\n    at JSXParserMixin.parseExprOps (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10410:23)\n    at JSXParserMixin.parseMaybeConditional (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10387:23)\n    at JSXParserMixin.parseMaybeAssign (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10348:21)\n    at D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10318:39\n    at JSXParserMixin.allowInAnd (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:11931:16)\n    at JSXParserMixin.parseMaybeAssignAllowIn (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:10318:17)\n    at JSXParserMixin.parseVar (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12864:91)\n    at JSXParserMixin.parseVarStatement (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12710:10)\n    at JSXParserMixin.parseStatementContent (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12322:23)\n    at JSXParserMixin.parseStatementLike (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12239:17)\n    at JSXParserMixin.parseStatementListItem (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12219:17)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12796:61)\n    at JSXParserMixin.parseBlockBody (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12789:10)\n    at JSXParserMixin.parseBlock (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12777:10)\n    at JSXParserMixin.parseFunctionBody (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:11616:24)\n    at JSXParserMixin.parseFunctionBodyAndFinish (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:11602:10)\n    at D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12919:12\n    at JSXParserMixin.withSmartMixTopicForbiddingContext (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:11913:14)\n    at JSXParserMixin.parseFunction (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12918:10)\n    at JSXParserMixin.parseFunctionStatement (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12602:17)\n    at JSXParserMixin.parseStatementContent (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12263:21)\n    at JSXParserMixin.parseStatementLike (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12239:17)\n    at JSXParserMixin.parseModuleItem (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12216:17)\n    at JSXParserMixin.parseBlockOrModuleBlockBody (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12796:36)\n    at JSXParserMixin.parseBlockBody (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12789:10)\n    at JSXParserMixin.parseProgram (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12116:10)\n    at JSXParserMixin.parseTopLevel (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:12106:25)\n    at JSXParserMixin.parse (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:13905:10)\n    at parse (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\parser\\lib\\index.js:13947:38)\n    at parser (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\core\\lib\\parser\\index.js:41:34)\n    at parser.next (<anonymous>)\n    at normalizeFile (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\core\\lib\\transformation\\normalize-file.js:64:37)\n    at normalizeFile.next (<anonymous>)\n    at run (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\core\\lib\\transformation\\index.js:21:50)\n    at run.next (<anonymous>)\n    at transform (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\@babel\\core\\lib\\transform.js:22:33)\n    at transform.next (<anonymous>)\n    at step (D:\\workspace\\django\\Shoes-shop\\frontend\\node_modules\\gensync\\index.js:261:32)"
 }

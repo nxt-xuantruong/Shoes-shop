@@ -30,7 +30,7 @@ urlpatterns = [
     path('api/', include(router.urls)),
     path('api/o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     
-    # path("api/", include('customers.urls')),  
+    path("api/", include('customer.urls')),  
     path("api/", include('product.urls')),    
     # path("api/", include('order.urls')),    
 

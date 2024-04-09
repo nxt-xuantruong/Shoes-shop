@@ -74,6 +74,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'product',
     'baseapi',
+    'customer',
 ]
 
 MIDDLEWARE = [

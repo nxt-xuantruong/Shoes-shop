@@ -14,6 +14,9 @@ import List from "../Page/Admin/Product/List";
 import LoginAdmin from "../Page/Admin/Login/Login";
 import New from "../Page/Admin/Product/New";
 import ListCategory from "../Page/Admin/Category/List";
+import NewCategory from "../Page/Admin/Category/New";
+import Edit from "../Page/Admin/Product/edit";
+import EditCategory from "../Page/Admin/Category/Edit";
 
 export const routesConfig = [
   { path: "/", component: Home },
@@ -38,10 +41,10 @@ export const routesConfig = [
   // { path: "/admin/user/edit/:id", component: EditUser, layout: LayoutaAdmin },
   { path: "/admin/products/", component: List, layout: LayoutaAdmin },
   { path: "/admin/products/new", component: New, layout: LayoutaAdmin },
-  // { path: "/admin/products/:id", component: Edit, layout: LayoutaAdmin },
+  { path: "/admin/products/:id", component: Edit, layout: LayoutaAdmin },
   { path: "/admin/categories/", component: ListCategory, layout: LayoutaAdmin },
-  // { path: "/admin/categories/new", component: NewCategory, layout: LayoutaAdmin },
-  // { path: "/admin/categories/:id", component: EditCategory, layout: LayoutaAdmin },
+  { path: "/admin/categories/new", component: NewCategory, layout: LayoutaAdmin },
+  { path: "/admin/categories/:id", component: EditCategory, layout: LayoutaAdmin },
 ];
 
 export const privateRoute = [

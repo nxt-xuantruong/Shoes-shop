@@ -10,7 +10,7 @@ export default function LayoutaAdmin({ children }) {
       >
         <div id="page-body" className="d-flex">
           <Sidebar />
-          <div id="wp-content">{children}</div>
+          <div id="wp-content" className="ps-0">{children}</div>
         </div>
       </div>
     </div>

@@ -5,7 +5,6 @@ from django.utils import timezone
 # Create your models here.
 class Category(models.Model):
     name = models.CharField(max_length=255)
-    slug=models.CharField(max_length=300)
     date = models.DateTimeField(default=timezone.now)
     parent_id=models.IntegerField(default=0)
 
