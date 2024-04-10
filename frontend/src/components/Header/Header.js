@@ -2,22 +2,26 @@ import {
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Search from "../Search/Search";
 import Cart from "../Cart/Cart";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 
 import "./Header.css";
 import Menu from "../Menu/Menu";
 import { Link } from "react-router-dom";
+import { logoutCustomer } from "../../Config/store/oauthCustomer";
 
 function Header() {
 
-  const [currentUser, setCurrentUser] = useState(useSelector((state) => state.oauthCustomer))
-  console.log(currentUser);
+  const currentUser=useSelector((state) => state.oauthCustomer)
+  const dispatch = useDispatch();
   const handleLogOut = () => {
-    setCurrentUser(null);
+    dispatch(logoutCustomer())
   };
+  // useEffect(() => {
+  //   setCurrentUser(currentUser)
+  // },[currentUser])
 
   return (
     <header className="header">
@@ -29,7 +33,7 @@ function Header() {
           />
         </Link>
         <Search />
-        {currentUser !== null ? (
+        {currentUser.user !== "" ? (
           <div className="userAction">
             <FontAwesomeIcon icon={faUser} />
             <span>{currentUser.user}</span>

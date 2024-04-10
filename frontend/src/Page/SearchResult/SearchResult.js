@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
@@ -6,15 +6,23 @@ import Pagination from "../../components/Pagination/Pagination";
 import ProductList from "../../components/ProductList/ProductList";
 
 import { PriceContext } from "../../Layouts/SidebarLayout/SidebarLayout";
+import productService from "../../services/productService";
 
 function SearchResult() {
-  const data = useSelector((state) => state.products.products);
+  const [data, setData] = useState([])
   const price = useContext(PriceContext);
   const { query } = useParams();
   const resultsPerPage = 20; // Số kết quả trên mỗi trang
   const queryResult = data.filter((element) => {
     return element.name.toLowerCase().includes(query.toLowerCase());
   });
+  useEffect(() => {
+    productService.gets().then((response) => {
+      if (response.data) {
+        setData(response.data.results);
+      }
+    });
+  },[])
 
   // Lấy chỉ số của trang hiện tại từ URL (nếu có)
   const currentPageIndex = parseInt(useParams().pageNumber) || 1;

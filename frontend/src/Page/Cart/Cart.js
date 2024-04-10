@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 
 function Cart() {
   const cart = useSelector((state) => state.cart.cart);
-  const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+  const currentUser = useSelector((state)=>state.oauthCustomer);
   const userCart = currentUser
     ? cart.filter((item) => item.userId === currentUser.id)
     : [];
@@ -29,7 +29,7 @@ function Cart() {
     return total;
   };
   const handlePriceSale = (product) => {
-    return (product.price / 100) * (100 - product.sale);
+    return (product.price / 100) * (100 - product.discount);
   };
   return (
     <div className="cart">
@@ -52,7 +52,7 @@ function Cart() {
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>
-                  <img src={item.img_thumbnail} alt={item.name} />
+                  <img src={item.thumbnail} alt={item.name} />
                 </td>
                 <td>{item.name}</td>
                 <td>{item.selectedSize}</td>

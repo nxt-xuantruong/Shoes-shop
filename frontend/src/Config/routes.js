@@ -17,6 +17,8 @@ import ListCategory from "../Page/Admin/Category/List";
 import NewCategory from "../Page/Admin/Category/New";
 import Edit from "../Page/Admin/Product/edit";
 import EditCategory from "../Page/Admin/Category/Edit";
+import UserCustomer from "../Page/Admin/UserCustomer/UserCustomer";
+import EditUser from "../Page/Admin/UserCustomer/EditUser";
 
 export const routesConfig = [
   { path: "/", component: Home },
@@ -37,8 +39,8 @@ export const routesConfig = [
   { path: "/user/:type", component: Account },
   { path: "/pay", component: Pay },
   { path: "/admin/", component: LoginAdmin },
-  // { path: "/admin/user", component: UserCustomer, layout: LayoutaAdmin },
-  // { path: "/admin/user/edit/:id", component: EditUser, layout: LayoutaAdmin },
+  { path: "/admin/user", component: UserCustomer, layout: LayoutaAdmin },
+  { path: "/admin/user/edit/:id", component: EditUser, layout: LayoutaAdmin },
   { path: "/admin/products/", component: List, layout: LayoutaAdmin },
   { path: "/admin/products/new", component: New, layout: LayoutaAdmin },
   { path: "/admin/products/:id", component: Edit, layout: LayoutaAdmin },

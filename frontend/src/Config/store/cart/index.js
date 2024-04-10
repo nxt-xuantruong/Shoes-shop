@@ -18,7 +18,7 @@ export const cartSlice = createSlice({
     deleteCart: (state, action) => {
       state.cart = state.cart.filter(
         (c) =>
-          !(c.id === action.payload && c.selectedSize === action.payload.size)
+          !(c.id === action.payload.id && c.selectedSize === action.payload.size)
       );
     },
     deleteAllCart: (state, action) => {

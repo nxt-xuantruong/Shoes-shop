@@ -2,28 +2,44 @@ import { useState, useEffect, useContext } from "react";
 import { useSelector } from "react-redux";
 
 import ProductList from "../ProductList/ProductList";
-
+import productService from "../../services/productService"
+import categoryService from "../../services/categoryService"
 import { PriceContext } from "../../Layouts/SidebarLayout/SidebarLayout";
 
 import "./Category.css";
 
 function Category({ data, pageCate }) {
-  const obj = useSelector((state) => state.products.products);
+  const [product, setProduct] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [tab, setTab] = useState(!pageCate && data.children[0]);
   const [dataTab, setDataTab] = useState([]);
   const [dataCate, setDataCate] = useState([]);
   const [loadMore, setLoadMore] = useState(false);
   const price = useContext(PriceContext);
   useEffect(() => {
+    productService.gets().then((response) => {
+      if (response.data) {
+        setProduct(response.data.results);
+      }
+    });
+    categoryService.gets().then((response) => {
+      if (response.data) {
+        setCategories(response.data.results);
+      }
+    });
+  }, []);
+  useEffect(() => {
     if (!pageCate) {
-      let result = obj.filter((item) => item.slug === tab.toUpperCase());
+      let result = product.filter((item) => 
+        categories.find(c => c.id === item.category_id)?.name.toUpperCase() === tab.toUpperCase()
+      );
       setDataTab(result);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [tab]);
   useEffect(() => {
-    let result = obj.filter(
-      (item) => item.slug === data.title.toUpperCase() && item.price <= price
+    let result = product.filter(
+      (item) => categories.find(c => c.id === item.category_id)?.name.toUpperCase() === data.title.toUpperCase() && item.price <= price
     );
     if (result.length > 8) {
       setDataCate(result.slice(0, 8));
@@ -37,8 +53,8 @@ function Category({ data, pageCate }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [data.title, price]);
   const handleLoadMore = () => {
-    let filteredResult = obj.filter(
-      (item) => item.slug === data.title.toUpperCase() && item.price <= price
+    let filteredResult = product.filter(
+      (item) => categories.find(c => c.id === item.category_id)?.name.toUpperCase() === data.title.toUpperCase() && item.price <= price
     );
 
     if (loadMore) {

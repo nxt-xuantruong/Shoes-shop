@@ -12,23 +12,27 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { addCart, editCart } from "../../Config/store/cart";
 
 import "./ProductDetail.css";
+import productService from "../../services/productService";
 
 function ProductDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const data = useSelector((state) => state.products.products);
+  const [data, setData] = useState({})
+  const [LinkImg, setLinkImg] = useState('');
+  const [imgs, setImgs] = useState([])
   const cartItems = useSelector((state) => state.cart.cart);
-  const product = data.find((item) => {
-    return item.id === id;
-  });
-  console.log(product);
-  const [selectedSize, setSelectedSize] = useState("");
-  const [LinkImg, setLinkImg] = useState(product.img_desc[0]);
-
+  const currentUser = useSelector(state => state.oauthCustomer);
   useEffect(() => {
-    document.querySelector(".imgSlide:first-child").classList.add("active");
-  }, []);
+      productService.get(id).then((response) => {
+        if (response.data) {
+          setData({ ...response.data });
+          setLinkImg(response.data.images[0].image)
+          setImgs(response.data.images)
+        }
+      });
+  }, [id]);
+  const [selectedSize, setSelectedSize] = useState("");
 
   const handleImgSlideClick = (e) => {
     const clickedImage = e.currentTarget.querySelector("img").src;
@@ -67,7 +71,7 @@ function ProductDetail() {
   };
 
   const handlePriceSale = (product) => {
-    return (product.price / 100) * (100 - product.sale);
+    return (product.price / 100) * (100 - product.discount);
   };
 
   const handleSizeChange = (event) => {
@@ -87,7 +91,6 @@ function ProductDetail() {
     if (!selectedSize) {
       return;
     } else {
-      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
       if (!currentUser) {
         navigate("/user/login");
       } else {
@@ -138,9 +141,9 @@ function ProductDetail() {
     <div className="mainContent">
       <div className="infoProduct">
         <div className="slideImg">
-          <img className="imgMain" src={LinkImg} alt={product.name} />
+          <img className="imgMain" src={LinkImg} alt={data.name} />
           <ul className="imgDescSlide">
-            {product.img_desc.map((item, index) => {
+            {imgs.map((item, index) => {
               return (
                 <li
                   key={index}
@@ -149,7 +152,7 @@ function ProductDetail() {
                     handleImgSlideClick(e);
                   }}
                 >
-                  <img src={item} alt="img" />
+                  <img src={item.image} alt="img" />
                 </li>
               );
             })}
@@ -162,10 +165,10 @@ function ProductDetail() {
           </button>
         </div>
         <div className="Info">
-          <h2 className="nameProduct">{product.name}</h2>
+          <h2 className="nameProduct">{data.name}</h2>
           <div className="price">
-            <p className="priceSale">{handlePriceSale(product)}</p>
-            <p className="priceOriginal">{product.price}</p>
+            <p className="priceSale">{handlePriceSale(data)}</p>
+            <p className="priceOriginal">{data.price}</p>
           </div>
           <div className="size">
             <span className="label">SIZE</span>
@@ -185,7 +188,7 @@ function ProductDetail() {
           <div className="btn">
             <button
               disabled={!selectedSize && true}
-              onClick={() => handleAddtoCart(product)}
+              onClick={() => handleAddtoCart(data)}
               className="btnAddToCart"
             >
               Thêm vào giỏ hàng
@@ -193,7 +196,7 @@ function ProductDetail() {
             <button
               disabled={!selectedSize && true}
               className="btnPay"
-              onClick={() => handleBuyNow(product)}
+              onClick={() => handleBuyNow(data)}
             >
               Mua ngay
             </button>
@@ -224,17 +227,15 @@ function ProductDetail() {
               đổi trả size linh hoạt
             </li>
           </ul>
-          <p>
-            <b>Thương hiệu:</b> {product.slug}
-          </p>
+
         </div>
       </div>
       <div className="description">
         <h2>Mô tả</h2>
-        <div className="textDesc">{product.desc}</div>
+        <div className="textDesc">{data.description}</div>
         <div className="imgDesc">
-          {product.img_desc.map((item, index) => {
-            return <img key={index} alt="img-desc" src={item} />;
+          {imgs.map((item, index) => {
+            return <img key={index} alt="img-desc" src={item.image} />;
           })}
         </div>
       </div>
