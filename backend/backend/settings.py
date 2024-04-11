@@ -75,6 +75,7 @@ INSTALLED_APPS = [
     'product',
     'baseapi',
     'customer',
+    'sale',
 ]
 
 MIDDLEWARE = [

@@ -31,7 +31,8 @@ urlpatterns = [
     path('api/o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
     
     path("api/", include('customer.urls')),  
-    path("api/", include('product.urls')),    
+    path("api/", include('product.urls')),  
+    path("api/", include('sale.urls')),    
     # path("api/", include('order.urls')),    
 
     

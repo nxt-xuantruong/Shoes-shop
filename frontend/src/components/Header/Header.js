@@ -19,9 +19,7 @@ function Header() {
   const handleLogOut = () => {
     dispatch(logoutCustomer())
   };
-  // useEffect(() => {
-  //   setCurrentUser(currentUser)
-  // },[currentUser])
+
 
   return (
     <header className="header">

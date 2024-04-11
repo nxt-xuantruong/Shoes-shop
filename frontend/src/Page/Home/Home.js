@@ -5,7 +5,7 @@ import "./Home.css";
 
 const homeCategory = [
   {
-    title: "Giày nike",
+    title: "Giày NIKE",
     children: ["Nike Air Force 1", "Jordan 4", "Nike Blazer", "Nike SB Dunk"],
   },
   {

@@ -19,6 +19,8 @@ import Edit from "../Page/Admin/Product/edit";
 import EditCategory from "../Page/Admin/Category/Edit";
 import UserCustomer from "../Page/Admin/UserCustomer/UserCustomer";
 import EditUser from "../Page/Admin/UserCustomer/EditUser";
+import BannerList from "../Page/Admin/Banner/List";
+import BannerNew from "../Page/Admin/Banner/New";
 
 export const routesConfig = [
   { path: "/", component: Home },
@@ -47,6 +49,8 @@ export const routesConfig = [
   { path: "/admin/categories/", component: ListCategory, layout: LayoutaAdmin },
   { path: "/admin/categories/new", component: NewCategory, layout: LayoutaAdmin },
   { path: "/admin/categories/:id", component: EditCategory, layout: LayoutaAdmin },
+  { path: "/admin/banners/", component: BannerList, layout: LayoutaAdmin },
+  { path: "/admin/banners/new", component: BannerNew, layout: LayoutaAdmin },
 ];
 
 export const privateRoute = [
