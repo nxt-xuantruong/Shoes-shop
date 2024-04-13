@@ -1,33 +1,50 @@
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 // import { updateUser } from "../../../store/users";
 import { useDispatch, useSelector } from "react-redux";
+import customerServices from "../../../services/customerServices";
 
 export default function EditUser() {
   const { id } = useParams();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const users = useSelector((state) => state.users.users);
 
-  const list = users.filter((item) => item.id === id);
+  const [formData, setFormData] = useState({});
+  useEffect(() => {
+  
 
-  const [formData, setFormData] = useState({
-    name: list[0].name,
-    email: list[0].email,
-    id: id,
-  });
+    customerServices.get(id).then((response) => {
+      if (response.data) {
+        setFormData({ ...response.data });
+      }
+    });
 
+  }, []);
   const handleChange = (e) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
+      [e.target.phone]: e.target.value,
+      [e.target.address]: e.target.value,
+      [e.target.email]: e.target.value,
+
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // dispatch(updateUser(formData));
+    customerServices.update(formData)
+      .then(response => {
+        if (response.data) {
+          setFormData(response.data);
+           alert("Đã cập nhật thành công");
+        }
+      })
+      .catch((error) => {
+        alert("Lỗi: " + error.message);
+      })
     navigate("/admin/user");
   };
 
@@ -45,10 +62,10 @@ export default function EditUser() {
                 className="col-md-4 col-form-label text-md-right font-weight-bold"
                 style={{ color: "black" }}
               >
-                Tên đăng nhập
+                Họ và tên
               </label>
 
-              <div className="col-md-6">
+              <div className="col-md-8">
                 <input
                   id="name"
                   type="name"
@@ -68,13 +85,53 @@ export default function EditUser() {
                 Email
               </label>
 
-              <div className="col-md-6">
+              <div className="col-md-8">
                 <input
                   id="email"
                   type="email"
                   className="form-control "
                   name="email"
                   value={formData.email}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="form-group row mt-3">
+              <label
+                for="phone"
+                className="col-md-4 col-form-label text-md-right"
+                style={{ color: "black" }}
+              >
+                Phone
+              </label>
+
+              <div className="col-md-8">
+                <input
+                  id="phone"
+                  type="phone"
+                  className="form-control "
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                />
+              </div>
+            </div>
+            <div className="form-group row mt-3">
+              <label
+                for="address"
+                className="col-md-4 col-form-label text-md-right"
+                style={{ color: "black" }}
+              >
+                address
+              </label>
+
+              <div className="col-md-8">
+                <input
+                  id="address"
+                  type="address"
+                  className="form-control "
+                  name="address"
+                  value={formData.address}
                   onChange={handleChange}
                 />
               </div>

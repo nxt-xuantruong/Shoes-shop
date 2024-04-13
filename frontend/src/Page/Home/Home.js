@@ -53,7 +53,7 @@ function Home() {
         </div>
         <div className="right">
           <img
-            src="https://shopgiayreplica.com/wp-content/uploads/2023/07/roll-sneaker-avarta.jpg"
+            src="https://shopgiayreplica.com/wp-content/uploads/2024/03/roll-sneaker-avarta.jpg"
             alt="homeAboutImg"
           />
         </div>

@@ -53,7 +53,7 @@
 
 .userAction .menuUser{
     display: none;
-    top: 12px;
+    top: 34px;
     right: 0;
     z-index: 1000;
     cursor: pointer;
@@ -91,5 +91,14 @@
     right: 10px;
     border-left: 12px solid transparent;
     border-right: 12px solid transparent;
-    border-bottom: 12px solid #ccc;
+    border-bottom: 12px solid #e5dddd;
+}
+
+.menuUser::after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 12px;
+    width: 100%;
+    background-color: transparent;
 }

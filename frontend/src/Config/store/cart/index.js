@@ -22,10 +22,12 @@ export const cartSlice = createSlice({
       );
     },
     deleteAllCart: (state, action) => {
-      state.cart = state.cart.filter((c) => c.id !== action.payload);
+       state.cart = state.cart.filter((c) => c.userId !== action.payload.idUser);
     },
     editCart: (state, action) => {
-      state.cart = action.payload;
+      state.cart = state.cart.map((c) =>
+        c.id === action.payload.id? action.payload : c
+      );
     },
   },
 });

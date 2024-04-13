@@ -33,7 +33,7 @@ urlpatterns = [
     path("api/", include('customer.urls')),  
     path("api/", include('product.urls')),  
     path("api/", include('sale.urls')),    
-    # path("api/", include('order.urls')),    
+    path("api/", include('order.urls')),    
 
     
     re_path(r"^.*$", single_page_view),

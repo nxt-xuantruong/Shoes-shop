@@ -1,9 +1,8 @@
 import { useState, useEffect, useContext } from "react";
-import { useSelector } from "react-redux";
 
 import ProductList from "../ProductList/ProductList";
-import productService from "../../services/productService"
-import categoryService from "../../services/categoryService"
+import productService from "../../services/productService";
+import categoryService from "../../services/categoryService";
 import { PriceContext } from "../../Layouts/SidebarLayout/SidebarLayout";
 
 import "./Category.css";
@@ -11,11 +10,12 @@ import "./Category.css";
 function Category({ data, pageCate }) {
   const [product, setProduct] = useState([]);
   const [categories, setCategories] = useState([]);
-  const [tab, setTab] = useState(!pageCate && data.children[0]);
+  const [tab, setTab] = useState(!pageCate && data.children[0]); // Lưu trữ tab mặc định
   const [dataTab, setDataTab] = useState([]);
   const [dataCate, setDataCate] = useState([]);
   const [loadMore, setLoadMore] = useState(false);
   const price = useContext(PriceContext);
+
   useEffect(() => {
     productService.gets().then((response) => {
       if (response.data) {
@@ -28,30 +28,33 @@ function Category({ data, pageCate }) {
       }
     });
   }, []);
+
   useEffect(() => {
+    // Lọc dữ liệu sản phẩm cho tab mặc định
     if (!pageCate) {
       let result = product.filter((item) => 
         categories.find(c => c.id === item.category_id)?.name.toUpperCase() === tab.toUpperCase()
       );
       setDataTab(result);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab]);
+  }, [tab,categories,pageCate,product]);
+
   useEffect(() => {
-    let result = product.filter(
-      (item) => categories.find(c => c.id === item.category_id)?.name.toUpperCase() === data.title.toUpperCase() && item.price <= price
-    );
-    if (result.length > 8) {
-      setDataCate(result.slice(0, 8));
-      setLoadMore(true);
-    } else if (result.length === 0) {
-      setDataCate([])
-    }
-    else {
+    // Lọc dữ liệu sản phẩm cho tab mặc định khi component được tạo
+    if (!pageCate) {
+      let result = product.filter((item) => 
+        categories.find(c => c.id === item.category_id)?.name.toUpperCase() === tab.toUpperCase()
+      );
+      setDataTab(result);
+    } else {
+      // Lọc dữ liệu sản phẩm cho tab mặc định khi pageCate được kích hoạt
+      let result = product.filter(
+        (item) => categories.find(c => c.id === item.category_id)?.name.toUpperCase() === data.title.toUpperCase() && item.price <= price
+      );
       setDataCate(result);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [data.title, price]);
+  }, [categories, data.title, pageCate, price, product, tab]);
+
   const handleLoadMore = () => {
     let filteredResult = product.filter(
       (item) => categories.find(c => c.id === item.category_id)?.name.toUpperCase() === data.title.toUpperCase() && item.price <= price
@@ -65,6 +68,7 @@ function Category({ data, pageCate }) {
       setLoadMore(true);
     }
   };
+
   return (
     <div className="category">
       <h2 className="categoryName">{data.title}</h2>

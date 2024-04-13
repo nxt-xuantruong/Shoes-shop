@@ -20,7 +20,7 @@ function LoginAdmin() {
         if (response && response.data) {
           dispatch(updateOauthInfo(response.data));
           dispatch(loginAdmin({ name:username}))
-          navigate("/admin/products");
+          navigate("/admin/user");
         }
       })
       .catch((err) => console.log(err));
