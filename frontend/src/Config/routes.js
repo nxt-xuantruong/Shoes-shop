@@ -22,6 +22,10 @@ import EditUser from "../Page/Admin/UserCustomer/EditUser";
 import BannerList from "../Page/Admin/Banner/List";
 import BannerNew from "../Page/Admin/Banner/New";
 import BannerEdit from "../Page/Admin/Banner/Edit";
+import ListOrder from "../Page/Admin/Order/List";
+import OrderDetial from "../Page/Admin/Order/detial";
+import UserOrder from "../Page/Order/Order";
+import UorderDetial from "../Page/Order/Detail";
 
 export const routesConfig = [
   { path: "/", component: Home },
@@ -32,14 +36,16 @@ export const routesConfig = [
     layout: SidebarLayout,
   },
   { path: "/product/:id", component: ProductDetail },
-  { path: "/search/:query", component: SearchResult, layout: SidebarLayout },
-  {
-    path: "/search/:query/page/:pageNumber",
-    component: SearchResult,
-    layout: SidebarLayout,
-  },
+  { path: "/search", component: SearchResult, layout: SidebarLayout },
+  // {
+  //   path: "/search/:query/page/:pageNumber",
+  //   component: SearchResult,
+  //   layout: SidebarLayout,
+  // },
   { path: "/cart", component: Cart },
   { path: "/user/:type", component: Account },
+  { path: "/user/order", component: UserOrder },
+  { path: "/user/order/:id", component: UorderDetial },
   { path: "/pay", component: Pay },
   { path: "/admin/", component: LoginAdmin },
   { path: "/admin/user", component: UserCustomer, layout: LayoutaAdmin },
@@ -47,12 +53,15 @@ export const routesConfig = [
   { path: "/admin/products/", component: List, layout: LayoutaAdmin },
   { path: "/admin/products/new", component: New, layout: LayoutaAdmin },
   { path: "/admin/products/:id", component: Edit, layout: LayoutaAdmin },
-  { path: "/admin/categories/", component: ListCategory, layout: LayoutaAdmin },
+  { path: "/admin/categories", component: ListCategory, layout: LayoutaAdmin },
   { path: "/admin/categories/new", component: NewCategory, layout: LayoutaAdmin },
   { path: "/admin/categories/:id", component: EditCategory, layout: LayoutaAdmin },
   { path: "/admin/banners/", component: BannerList, layout: LayoutaAdmin },
   { path: "/admin/banners/new", component: BannerNew, layout: LayoutaAdmin },
   { path: "/admin/banners/:id", component: BannerEdit, layout: LayoutaAdmin },
+  { path: "/admin/order/", component: ListOrder, layout: LayoutaAdmin },
+  { path: "/admin/order/:id", component: OrderDetial, layout: LayoutaAdmin },
+
 
 ];
 

@@ -1,12 +1,8 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./Pagination.css";
 
-function Pagination({ totalResults, resultsPerPage }) {
-  const { query, pageNumber } = useParams();
-  const currentPage = parseInt(pageNumber);
+function Pagination({ totalResults, resultsPerPage, currentPage, baseURL }) {
   const totalPages = Math.ceil(totalResults / resultsPerPage);
-
-  const pages = [];
   const maxVisiblePages = 5; // Số trang tối đa hiển thị trước hoặc sau trang hiện tại
   const sidePages = Math.floor((maxVisiblePages - 1) / 2); // Số trang hiển thị ở mỗi bên trước và sau trang hiện tại
 
@@ -16,64 +12,49 @@ function Pagination({ totalResults, resultsPerPage }) {
   let endPage = startPage + maxVisiblePages - 1;
   endPage = Math.min(totalPages, endPage); // Đảm bảo endPage không lớn hơn totalPages
 
-  // Tính toán trang đầu tiên và trang cuối cùng
-  const firstPage = 1;
-  const lastPage = totalPages;
+  // // Tính toán trang đầu tiên và trang cuối cùng
+  // const firstPage = 1;
+  // const lastPage = totalPages;
 
   // Nút "Previous"
-  if (currentPage > 1) {
-    pages.push(
-      <Link key="previous" to={`/search/${query}/page/${currentPage - 1}`}>
-        <button className="btnPage">Previous</button>
-      </Link>
-    );
-  }
+  const prevPage = Math.max(1, currentPage - 1);
+  const prevPageURL = `${baseURL}?page=${prevPage}`;
+  const prevButton = (
+    <Link to={prevPageURL}>
+      <button className="btnPage">Previous</button>
+    </Link>
+  );
 
-  // Nút cho trang đầu tiên
-  if (startPage > firstPage) {
-    pages.push(
-      <Link key={firstPage} to={`/search/${query}/page/${firstPage}`}>
-        <button className="btnPage">{firstPage}</button>
-      </Link>
-    );
-    if (startPage > firstPage + 1) {
-      pages.push(<span key="ellipsis-1">...</span>);
-    }
-  }
+  // Nút "Next"
+  const nextPage = Math.min(totalPages, currentPage + 1);
+  const nextPageURL = `${baseURL}?page=${nextPage}`;
+  const nextButton = (
+    <Link to={nextPageURL}>
+      <button className="btnPage">Next</button>
+    </Link>
+  );
 
   // Các trang nằm trong khoảng được hiển thị
+  const pages = [];
   for (let i = startPage; i <= endPage; i++) {
-    pages.push(
-      <Link key={i} to={`/search/${query}/page/${i}`}>
+    const pageURL = `${baseURL}?page=${i}`;
+    const pageButton = (
+      <Link key={i} to={pageURL}>
         <button className={`btnPage ${currentPage === i ? "active" : ""}`}>
           {i}
         </button>
       </Link>
     );
+    pages.push(pageButton);
   }
 
-  // Nút cho trang cuối cùng
-  if (endPage < lastPage) {
-    if (endPage < lastPage - 1) {
-      pages.push(<span key="ellipsis-2">...</span>);
-    }
-    pages.push(
-      <Link key={lastPage} to={`/search/${query}/page/${lastPage}`}>
-        <button className="btnPage">{lastPage}</button>
-      </Link>
-    );
-  }
-
-  // Nút "Next"
-  if (currentPage < totalPages) {
-    pages.push(
-      <Link key="next" to={`/search/${query}/page/${currentPage + 1}`}>
-        <button className="btnPage">Next</button>
-      </Link>
-    );
-  }
-
-  return <div className="pagination">{pages}</div>;
+  return (
+    <div className="pagination">
+      {prevButton}
+      {pages}
+      {nextButton}
+    </div>
+  );
 }
 
 export default Pagination;

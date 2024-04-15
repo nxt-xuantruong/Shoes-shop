@@ -1,31 +1,59 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import Pagination from "../../../components/Pagination/Pagination";
 import productService from "../../../services/productService";
-import categoryService from "../../../services/categoryService";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import categoryService from "../../../services/categoryService";
 
 export default function List() {
-  const [product, setProduct] = useState([]);
+  const [products, setProducts] = useState([]);
   const [categories, setCategories] = useState([]);
+  const [totalPages, setTotalPages] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
+  const resultsPerPage = 10; // Số sản phẩm trên mỗi trang
+  const location = useLocation();
 
   useEffect(() => {
-    productService.gets().then((response) => {
-      if (response.data) {
-        setProduct(response.data.results);
-      }
-    });
+    // Kiểm tra nếu không có tham số page trong URL, thiết lập trang mặc định là 1
+    if (!location.search.includes("page")) {
+      setCurrentPage(1);
+    } else {
+      const page = new URLSearchParams(location.search).get("page");
+      setCurrentPage(Number(page));
+    }
+  }, [location]); // Chạy mỗi khi đường dẫn URL thay đổi
 
-    categoryService.gets().then((response) => {
+  useEffect(() => {
+    loadProducts();
+  }, [currentPage]);
+
+  useEffect(() => {
+    categoryService.gets({ full_data: true }).then((response) => {
       if (response.data) {
-        setCategories(response.data.results);
+        setCategories(response.data);
       }
     });
-  }, []);
+  },[])
+  const loadProducts = () => {
+    productService.gets({ page: currentPage }).then((response) => {
+      if (response.data) {
+        setProducts(response.data.results);
+        setTotalPages(Math.ceil(response.data.count / resultsPerPage));
+      }
+    });
+  };
 
   const handleDelete = (id) => {
-    productService.delete(id);
-    setProduct((pre) => pre.filter((product) => product.id !== id));
+    productService.delete(id).then(() => {
+      setProducts((prevProducts) =>
+        prevProducts.filter((product) => product.id !== id)
+      );
+    });
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -47,53 +75,54 @@ export default function List() {
               </tr>
             </thead>
             <tbody>
-              {product.length > 0 ? (
-                product.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>
-                        <img src={item.thumbnail} alt="ảnh" width={100}/>
-                      </td>
-                      <td>{item.name}</td>
-                      <td>{item.price}</td>
-                      <td>
-                        {
-                          categories.find((it) => it.id === item.category_id)
-                          ?.name || 'N/A'
-                        }
-                      </td>
-                      <td>{item.date}</td>
-                      <td>
-                        <div className="d-flex">
-                          <Link
-                            className="btn btn-success btn-sm rounded-0 text-white"
-                            to={item.id + "/"}
-                          >
-                            <FontAwesomeIcon icon={faPenToSquare}/>
-
-                          </Link>
-                          <button
-                            className="btn btn-danger btn-sm rounded-0 text-white"
-                            onClick={() =>
-                              window.confirm(
-                                "Bạn có chắc chắn xóa bản ghi này"
-                              ) && handleDelete(item.id)
-                            }
-                          >
-                            <FontAwesomeIcon icon={faTrashCan}/>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })
+              {products.length > 0 ? (
+                products.map((product) => (
+                  <tr key={product.id}>
+                    <td>
+                      <img src={product.thumbnail} alt="ảnh" width={100} />
+                    </td>
+                    <td>{product.name}</td>
+                    <td>{product.price}</td>
+                    <td>{categories.find(c => c.id === product.category_id)?.name}</td>
+                    <td>{product.date}</td>
+                    <td>
+                      <div className="d-flex">
+                        <Link
+                          className="btn btn-success btn-sm rounded-0 text-white"
+                          to={`${product.id}/`}
+                        >
+                          <FontAwesomeIcon icon={faPenToSquare} />
+                        </Link>
+                        <button
+                          className="btn btn-danger btn-sm rounded-0 text-white"
+                          onClick={() =>
+                            window.confirm(
+                              "Bạn có chắc chắn xóa bản ghi này"
+                            ) && handleDelete(product.id)
+                          }
+                        >
+                          <FontAwesomeIcon icon={faTrashCan} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
               ) : (
-                <h5 style={{ color: "red", marginTop: "10px" }}>
-                  Không có sản phẩm
-                </h5>
+                <tr>
+                  <td colSpan="6" style={{ color: "red", textAlign: "center" }}>
+                    Không có sản phẩm
+                  </td>
+                </tr>
               )}
             </tbody>
           </table>
+          <Pagination
+            totalResults={totalPages * resultsPerPage}
+            resultsPerPage={resultsPerPage}
+            currentPage={currentPage}
+            baseURL="/admin/products"
+            onPageChange={handlePageChange}
+          />
         </div>
       </div>
     </div>

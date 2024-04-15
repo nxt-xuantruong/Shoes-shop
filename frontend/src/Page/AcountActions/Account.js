@@ -10,7 +10,6 @@ import { loginCustomer } from "../../Config/store/oauthCustomer";
 
 function Account() {
   const { type } = useParams();
-  // const users = useSelector((state) => state.users.users);
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
@@ -31,13 +30,19 @@ function Account() {
     customerServices.create({ name, email, phone, password })
     alert("Đã tạo tài khoản thành công")
     // dispatch(addUser({ name, email, phone, password }));
-    navigate(-1, { replace: true });
+    navigate('/');
   };
 
   const handleLogin = () => {
     const data = { email, password: md5(password) }
+    const check = users.find(user => user.email === data.email && user.password === data.password)
+    if (check) {
       dispatch(loginCustomer({users, data}));
       navigate(-1, { replace: true });
+    } else {
+      setError("Tên người dùng hoặc mật khẩu không đúng.")
+    }
+    
   }
 
 
@@ -56,7 +61,7 @@ function Account() {
             <Link to="/user/login">đăng nhập tại đây</Link>
           </span>
         )}
-        {error && <p className="error">{error}</p>}
+        {error && <p className="error" style={{color:"red", fontWeight:"bold"}}>{error}</p>}
         <form className="form">
           {type === "signup" && (
             <input

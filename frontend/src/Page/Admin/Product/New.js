@@ -22,10 +22,10 @@ export default function New() {
   const [newImages, setNewImages] = useState([]);
 
   useEffect(() => {
-    categoryService.gets().then((response) => {
+    categoryService.gets({full_data :true}).then((response) => {
       if (response.data) {
         // console.log(response.data.results);
-        setCategories(response.data.results);
+        setCategories(response.data);
       }
     });
   }, []);

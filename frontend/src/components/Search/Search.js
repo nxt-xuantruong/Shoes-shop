@@ -11,7 +11,7 @@ function Search() {
 
   const handleSearch = () => {
     if (searchQuery.trim() !== "") {
-      navigate(`/search/${searchQuery}/page/1`);
+      navigate(`/search?query=${searchQuery}&page=1`); // Điều hướng tới URL tìm kiếm với query và trang đầu tiên
     }
   };
 

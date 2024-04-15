@@ -1,14 +1,20 @@
 import { createContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
+import queryString from "query-string";
+
 import Header from "../../components/Header/Header";
-import { MENU_ITEMS } from "../../components/menuItems";
-import "./SidebarLayout.css";
 import Footer from "../../components/Footer/Footer";
+
+import { MENU_ITEMS } from "../../components/menuItems";
+
+import "./SidebarLayout.css";
 
 export const PriceContext = createContext();
 
 function SidebarLayout({ children }) {
-  const { name, query } = useParams();
+  const { name } = useParams();
+  const location = useLocation();
+  const { query: searchQuery } = queryString.parse(location.search);
   const [priceRange, setPriceRange] = useState({ min: 0, max: 5000000 });
   const [priceValue, setPriceValue] = useState(5000000);
   const categories = MENU_ITEMS.filter(
@@ -36,7 +42,7 @@ function SidebarLayout({ children }) {
         <div className="title">
           {categories.length > 0
             ? categories[0].title.toUpperCase()
-            : "Kết quả tìm kiếm cho '" + query+"'"}
+            : "Kết quả tìm kiếm cho '" + searchQuery +"'"}
         </div>
         <div className="container">
           <div className="content"> {children}</div>

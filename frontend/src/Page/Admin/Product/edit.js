@@ -25,10 +25,9 @@ export default function Edit() {
   const imagesRef = useRef(null);
 
   useEffect(() => {
-    categoryService.gets().then((response) => {
+    categoryService.gets({full_data:true}).then((response) => {
       if (response.data) {
-        console.log(response.data.results);
-        setCategory(response.data.results);
+        setCategory(response.data);
       }
     });
 
@@ -39,7 +38,6 @@ export default function Edit() {
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-console.log(formData);
   const handleImageChange = (e) => {
     const selectedImages = Array.from(e.target.files).map((file) => {
       return URL.createObjectURL(file);
@@ -69,7 +67,6 @@ console.log(formData);
     productService.update(data)
       .then(response => {
         if (response.data) {
-          console.log(response.data)
           setFormData(response.data);
            alert("Đã cập nhật thành công");
         }

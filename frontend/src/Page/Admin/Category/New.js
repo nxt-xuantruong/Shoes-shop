@@ -9,13 +9,18 @@ const init_data = {
 
 export default function NewCategory() {
   const [category, setCategory] = useState([]);
+  const [categoryAll, setCategoryAll] = useState([]);
   const [formData, setFormData] = useState(init_data);
 
   useEffect(() => {
     categoryService.gets().then((response) => {
       if (response.data) {
-        console.log(response.data.results);
         setCategory(response.data.results);
+      }
+    });
+    categoryService.gets({full_data: true}).then((response) => {
+      if (response.data) {
+        setCategoryAll(response.data);
       }
     });
   }, []);
@@ -29,7 +34,6 @@ export default function NewCategory() {
     // fileInputRefThumbnail.current.value = "";
   };
 
-  console.log(formData);
   return (
     <div id="content" className="container-fluid">
       <div className="card">
@@ -81,7 +85,7 @@ export default function NewCategory() {
                       <option value="0" selected={formData.id === null}>
                         Chọn danh mục
                       </option>
-                      {category.map((item, index) => {
+                      {categoryAll.map((item, index) => {
                         return (
                           <option key={index} value={item.id}>
                             {item.name}

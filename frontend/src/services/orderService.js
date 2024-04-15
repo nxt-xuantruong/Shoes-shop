@@ -1,9 +1,9 @@
 import ApiService from "./ApiService";
-class OrderService extends ApiService {
+class orderService extends ApiService {
   get entity() {
     return "orders";
   }
 
 }
 
-export default new OrderService();
+export default new orderService();

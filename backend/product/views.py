@@ -4,6 +4,7 @@ from rest_framework.permissions import AllowAny, IsAuthenticated
 from oauth2_provider.contrib.rest_framework.permissions import TokenMatchesOASRequirements
 from oauth2_provider.contrib.rest_framework.authentication import OAuth2Authentication
 from rest_framework.response import Response
+from customPagination.pagination import CustomPagination
 
 from product.models import Category, Product, ProductImage
 from product.serializers import CategorySerializer, ProductSerializer, ProductImageSerializer
@@ -78,6 +79,7 @@ class CategoryViewSet(viewsets.ModelViewSet):
     """
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+    pagination_class = CustomPagination
     authentication_classes = [OAuth2Authentication]
     permission_classes = [TokenMatchesOASRequirements]
     required_alternate_scopes = {

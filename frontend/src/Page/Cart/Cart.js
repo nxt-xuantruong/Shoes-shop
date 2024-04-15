@@ -20,7 +20,9 @@ function Cart() {
   const removeFromCart = (id, size) => {
     dispatch(deleteCart({ id, size }));
   };
-
+  const removeBuyNow = () => {
+  localStorage.removeItem('buyNow');
+}
   const totalPrice = () => {
     let total = 0;
     for (let i = 0; i < userCart.length; i++) {
@@ -75,7 +77,7 @@ function Cart() {
         </tbody>
       </table>
       {userCart.length > 0 && (
-        <button>
+        <button onClick={removeBuyNow()}>
           <Link to="/pay">Thanh toán</Link>
         </button>
       )}

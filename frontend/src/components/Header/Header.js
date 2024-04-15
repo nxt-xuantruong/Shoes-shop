@@ -36,12 +36,7 @@ function Header() {
             <FontAwesomeIcon icon={faUser} />
             <span>{currentUser.user}</span>
             <ul className="menuUser">
-                <Link to='/account'>
-                  <li>
-                      Thông tin tài khoản
-                  </li>
-                </Link>
-                <Link to='/orders'>
+                <Link to='/user/order/'>
                   <li>
                         Đơn mua
                   </li>

@@ -1,24 +1,63 @@
+import React, { useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import categoryService from "../../../services/categoryService";
+
+import Pagination from "../../../components/Pagination/Pagination";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPenToSquare, faTrashCan } from "@fortawesome/free-solid-svg-icons";
 
 export default function ListCategory() {
   const [categories, setCategories] = useState([]);
+  const [categoryAll, setCategoryAll] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalCategories, setTotalCategories] = useState(0);
+  const resultsPerPage = 10; // Số lượng danh mục trên mỗi trang
+  const location = useLocation(); // Sử dụng useLocation để lấy thông tin đường dẫn URL
 
   useEffect(() => {
-    categoryService.gets().then((response) => {
+    // Kiểm tra nếu không có tham số page trong URL, thiết lập trang mặc định là 1
+    if (!location.search.includes("page")) {
+      setCurrentPage(1);
+    } else {
+      const page = new URLSearchParams(location.search).get("page");
+      setCurrentPage(Number(page));
+    }
+  }, [location]); // Chạy mỗi khi đường dẫn URL thay đổi
+
+  useEffect(() => {
+    categoryService.gets({ full_data:true }).then((response) => {
       if (response.data) {
-        setCategories(response.data.results);
+        setCategoryAll(response.data);
       }
     });
-  }, []);
+  },[])
+
+  useEffect(() => {
+    loadCategories();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]); // Gọi loadCategories mỗi khi currentPage thay đổi
+
+  const loadCategories = () => {
+    // const offset = (currentPage - 1) * resultsPerPage;
+    categoryService.gets({ page: currentPage }).then((response) => {
+      if (response.data) {
+        setCategories(response.data.results);
+        setTotalCategories(response.data.count);
+      }
+    });
+  };
 
   const handleDelete = (id) => {
     categoryService.delete(id);
-    setCategories((pre) => pre.filter((ct) => ct.id !== id));
+    setCategories((prevCategories) =>
+      prevCategories.filter((category) => category.id !== id)
+    );
+  };
+
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
   };
 
   return (
@@ -39,45 +78,52 @@ export default function ListCategory() {
             </thead>
             <tbody>
               {categories.length > 0 ? (
-                categories.map((item, index) => {
-                  return (
-                    <tr key={index}>
-                      <td>{item.name}</td>
-                      <td>
-                        {categories.find((it) => it.id === item.parent_id)?.name || ""}
-                      </td>
-                      <td>{item.date}</td>
-                      <td>
-                        <div className="d-flex">
-                          <Link
-                            className="btn btn-success btn-sm rounded-0 text-white"
-                            to={item.id + "/"}
-                          >
-                            <FontAwesomeIcon icon={faPenToSquare}/>
-                          </Link>
-                          <button
-                            className="btn btn-danger btn-sm rounded-0 text-white"
-                            onClick={() =>
-                              window.confirm(
-                                "Bạn có chắc chắn xóa bản ghi này"
-                              ) && handleDelete(item.id)
-                            }
-                          >
-                            <FontAwesomeIcon icon={faTrashCan}/>
-                          </button>
-                        </div>
-                      </td>
-                    </tr>
-                  );
-                })
+                categories.map((category) => (
+                  <tr key={category.id}>
+                    <td>{category.name}</td>
+                    <td>
+                      {categoryAll.find((it) => it.id === category.parent_id)?.name || ""}
+                    </td>
+                    <td>{category.date}</td>
+                    <td>
+                      <div className="d-flex">
+                        <Link
+                          className="btn btn-success btn-sm rounded-0 text-white"
+                          to={category.id + "/"}
+                        >
+                          <FontAwesomeIcon icon={faPenToSquare} />
+                        </Link>
+                        <button
+                          className="btn btn-danger btn-sm rounded-0 text-white"
+                          onClick={() =>
+                            window.confirm(
+                              "Bạn có chắc chắn xóa bản ghi này"
+                            ) && handleDelete(category.id)
+                          }
+                        >
+                          <FontAwesomeIcon icon={faTrashCan} />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
               ) : (
-                <h5 style={{ color: "red", marginTop: "10px" }}>
-                  Không có danh mục
-                </h5>
+                <tr>
+                  <td colSpan="4" style={{ color: "red", textAlign: "center" }}>
+                    Không có danh mục
+                  </td>
+                </tr>
               )}
             </tbody>
           </table>
         </div>
+        <Pagination
+          totalResults={totalCategories}
+          resultsPerPage={resultsPerPage}
+          currentPage={currentPage}
+          baseURL="/admin/categories" // Thay đổi baseURL tùy thuộc vào đường dẫn của bạn
+          onPageChange={handlePageChange}
+        />
       </div>
     </div>
   );

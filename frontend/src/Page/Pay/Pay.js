@@ -19,11 +19,6 @@ const init_data = {
   note: "",
 };
 
-let data_cart = {
-  price: 0,
-  quantity: 0,
-};
-let data = null
 
 export default function Payment() {
   const productBuy = JSON.parse(localStorage.getItem("buyNow"));
@@ -69,40 +64,53 @@ export default function Payment() {
           phone: response.data.phone,
           address: response.data.address,
         })
+
       }
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [idUser]);
 
-  const handleSubmit = () => {
-    data = { ...formData, address:addressRef.current,note:noteRef.current, customer: User.id, paid: 1 };
-    orderService
-      .create(data)
-      .then((response) => {
-        userCart.forEach((item) => {
-          data_cart = {
+const handleSubmit = () => {
+  const data = { ...formData, address: addressRef.current, note: noteRef.current, customer: User.id, paid: 1 };
+
+  orderService.create(data)
+    .then((response) => {
+      if (productBuy) {
+        const orderItemData = {
+          price: productBuy.price - productBuy.price * (productBuy.discount / 100),
+          quantity: productBuy.quantity,
+          size: productBuy.selectedSize,
+          order: response.data.id,
+          product: productBuy.id,
+        };
+        return orderItemService.create(orderItemData);
+      } else {
+        const orderItemPromises = userCart.map((item) => {
+          const orderItemData = {
             price: item.price - item.price * (item.discount / 100),
             quantity: item.quantity,
             size: item.selectedSize,
             order: response.data.id,
             product: item.id,
           };
-          orderItemService.create(data_cart).then((response) => {
-            console.log(response.data);
-          });
+          return orderItemService.create(orderItemData);
         });
-        alert('Đã thanh toán thành công')
-        
-        dispatch(deleteAllCart({ idUser }));
-        navigate('/')
-      })
-      .catch((error) => {
-        console.log(data);
+        return Promise.all(orderItemPromises);
+      }
+    })
+    .then(() => {
+      alert('Đã thanh toán thành công');
+      dispatch(deleteAllCart({ idUser }));
+      localStorage.removeItem("buyNow");
+      navigate('/');
+    })
+    .catch((error) => {
+      console.error("Error: ", error.message);
+      alert("Error: " + error.message);
+    });
+};
 
-        alert("Error: " + error.message);
-      })
-      .finally(() => {});
-  };
+
   return (
     <div id="wrapper" className="wp-inner clearfix" style={{ width: "96%", margin: "20px auto" }}>
       {clientToken ? (
@@ -178,7 +186,7 @@ export default function Payment() {
                     <input
                       type="text"
                       name="address"
-                      value={formData.address}
+                      
                       placeholder="VD: Số 49, Đường núi thành, ..."
                       id="address"
                       onChange={(e) =>

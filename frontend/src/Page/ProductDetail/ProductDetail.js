@@ -91,7 +91,7 @@ function ProductDetail() {
     if (!selectedSize) {
       return;
     } else {
-      if (!currentUser) {
+      if (currentUser.id === "") {
         navigate("/user/login");
       } else {
         let found = false;
@@ -128,13 +128,17 @@ function ProductDetail() {
   };
 
   const handleBuyNow = (product) => {
-    const newProduct = {
-      ...product,
-      selectedSize,
-      quantity: 1,
-    };
-    localStorage.setItem("buyNow", JSON.stringify(newProduct));
-    navigate("/pay");
+    if (currentUser.id === "") {
+      navigate("/user/login")
+    } else {
+      const newProduct = {
+        ...product,
+        selectedSize,
+        quantity: 1,
+      };
+      localStorage.setItem("buyNow", JSON.stringify(newProduct));
+      navigate("/pay");
+    }
   };
 
   return (
@@ -167,8 +171,16 @@ function ProductDetail() {
         <div className="Info">
           <h2 className="nameProduct">{data.name}</h2>
           <div className="price">
-            <p className="priceSale">{handlePriceSale(data)}</p>
-            <p className="priceOriginal">{data.price}</p>
+            <p className="priceSale">{Number(handlePriceSale(data)).toLocaleString("vi", {
+                              style: "currency",
+                              currency: "VND",
+                            })}</p>
+            <p className="priceOriginal">
+              {Number(data.price).toLocaleString("vi", {
+                              style: "currency",
+                              currency: "VND",
+                            })}
+            </p>
           </div>
           <div className="size">
             <span className="label">SIZE</span>

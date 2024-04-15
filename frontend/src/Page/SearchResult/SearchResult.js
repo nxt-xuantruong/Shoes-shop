@@ -1,49 +1,52 @@
 import { useContext, useEffect, useState } from "react";
-import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
+import queryString from "query-string"; // Import queryString để xử lý query string
 
 import Pagination from "../../components/Pagination/Pagination";
 import ProductList from "../../components/ProductList/ProductList";
 
 import { PriceContext } from "../../Layouts/SidebarLayout/SidebarLayout";
+
 import productService from "../../services/productService";
 
 function SearchResult() {
-  const [data, setData] = useState([])
+  const [data, setData] = useState([]);
+  const [dataResults, setDataResults] = useState([]);
+  const [totalResults, setTotalResults] = useState(0);
   const price = useContext(PriceContext);
-  const { query } = useParams();
+  const location = useLocation();
+  const { query: searchQuery, page: pageNumber } = useParams();
   const resultsPerPage = 20; // Số kết quả trên mỗi trang
-  const queryResult = data.filter((element) => {
-    return element.name.toLowerCase().includes(query.toLowerCase());
-  });
+
   useEffect(() => {
-    productService.gets().then((response) => {
+    const parsedQuery = queryString.parse(location.search); // Parse query string từ location
+    const page = parsedQuery.page || 1; // Lấy trang từ query string hoặc mặc định là 1
+    productService.gets({ page }).then((response) => {
       if (response.data) {
         setData(response.data.results);
+        setTotalResults(response.data.count);
       }
     });
-  },[])
+  }, [location.search]); // Chạy lại useEffect mỗi khi query string thay đổi
 
-  // Lấy chỉ số của trang hiện tại từ URL (nếu có)
-  const currentPageIndex = parseInt(useParams().pageNumber) || 1;
-
-  // Tính chỉ số bắt đầu và kết thúc của dữ liệu trên trang hiện tại
-  const startIndex = (currentPageIndex - 1) * resultsPerPage;
-  const endIndex = startIndex + resultsPerPage;
-
-  // Lấy dữ liệu của trang hiện tại dựa trên chỉ số bắt đầu và kết thúc
-  const currentResults = queryResult
-    .slice(startIndex, endIndex)
-    .filter((result) => result.price <= price);
-
+  // Tính chỉ số trang hiện tại từ pageNumber hoặc mặc định là 1
+  const currentPageIndex = parseInt(pageNumber) || 1;
+  // Lắng nghe sự thay đổi của price và cập nhật dataResults
+  useEffect(() => {
+  const updatedDataResults = data.filter((result) => {
+    const discountedPrice = (result.price / 100) * (100 - result.discount);
+    return discountedPrice <= price;
+  });
+  setDataResults(updatedDataResults);
+}, [data, price]); 
   return (
     <>
-      <ProductList data={currentResults} />
+      <ProductList data={dataResults} />
       <Pagination
-        totalResults={queryResult.length}
-        resultsPerPage={resultsPerPage}
+        baseURL={`/search?query=${searchQuery}&page`}
         currentPage={currentPageIndex}
-        lastPage={Math.ceil(queryResult.length / resultsPerPage)}
+        totalResults={totalResults}
+        resultsPerPage={resultsPerPage}
       />
     </>
   );

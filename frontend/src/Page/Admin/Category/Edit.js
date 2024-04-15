@@ -21,9 +21,9 @@ export default function EditCategory() {
       }
     });
 
-    categoryService.gets().then((response) => {
+    categoryService.gets({full_data:true}).then((response) => {
       if (response.data) {
-        setCategory(response.data.results);
+        setCategory(response.data);
       }
     });
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -39,8 +39,7 @@ export default function EditCategory() {
     navigate(-1)
   };
 
-  console.log(formData);
-  return (
+    return (
     <div id="content" className="container-fluid">
       <div className="card">
         <div className="card-header font-weight-bold d-flex justify-content-between align-items-center">
